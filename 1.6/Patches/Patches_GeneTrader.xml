@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
-    <!-- Add xenogerm stock generator to Gene Trader orbital trader (conditional on mod being loaded) -->
+    <!-- Add xenogerm stock generator to Gene Trader orbital trader (conditional on mod being
+    loaded) -->
     <Operation Class="PatchOperationFindMod">
         <mods>
             <li>Gene Trader</li>

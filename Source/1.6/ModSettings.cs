@@ -15,7 +15,7 @@ namespace XenogermsForSale
         public float valuePerArchite = DefaultValuePerArchite;
 
         // Default values
-        public const float DefaultBasePresetValue = 1300f;
+        public const float DefaultBasePresetValue = 900;
         public const float DefaultValuePerMetabolism = 10f;
         public const float DefaultValuePerComplexity = 15f;
         public const float DefaultValuePerArchite = 100f;

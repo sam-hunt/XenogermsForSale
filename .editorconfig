@@ -46,7 +46,7 @@ dotnet_code_quality_unused_parameters = all:suggestion
 # XML files (Defs, About.xml, Patches)
 [*.xml]
 indent_style = space
-indent_size = 2
+indent_size = 4
 
 # Markdown files
 [*.md]

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
@@ -9,7 +10,10 @@ namespace XenogermsForSale
         {
             var xenogerm = (Xenogerm)ThingMaker.MakeThing(ThingDefOf.Xenogerm);
 
-            // Initialize gene set from xenotype
+            // Initialize with empty genepacks - this creates the GeneSet internally
+            xenogerm.Initialize(new List<Genepack>(), xenotype.label, null);
+
+            // Add genes from xenotype
             if (!xenotype.genes.NullOrEmpty())
             {
                 foreach (var gene in xenotype.genes)
@@ -17,13 +21,6 @@ namespace XenogermsForSale
                     xenogerm.GeneSet.AddGene(gene);
                 }
             }
-
-            // Set display name (shows as "Hussar xenogerm" etc)
-            xenogerm.xenotypeName = xenotype.label;
-
-            // Note: iconDef is for custom xenotypes (XenotypeIconDef).
-            // Preset xenotypes use XenotypeDef.iconPath directly.
-            // Leaving iconDef null - display uses xenotypeName.
 
             // Store xenotype reference for implantation
             var comp = xenogerm.TryGetComp<CompXenotypeSource>();
@@ -39,7 +36,10 @@ namespace XenogermsForSale
         {
             var xenogerm = (Xenogerm)ThingMaker.MakeThing(ThingDefOf.Xenogerm);
 
-            // Initialize gene set from custom xenotype
+            // Initialize with empty genepacks - this creates the GeneSet internally
+            xenogerm.Initialize(new List<Genepack>(), customXenotype.name, customXenotype.iconDef);
+
+            // Add genes from custom xenotype
             if (!customXenotype.genes.NullOrEmpty())
             {
                 foreach (var gene in customXenotype.genes)
@@ -47,12 +47,6 @@ namespace XenogermsForSale
                     xenogerm.GeneSet.AddGene(gene);
                 }
             }
-
-            // Set display name
-            xenogerm.xenotypeName = customXenotype.name;
-
-            // Set icon from custom xenotype
-            xenogerm.iconDef = customXenotype.iconDef;
 
             // Note: No CompXenotypeSource set - pawn will get genes but not a preset xenotype reference
             // This matches vanilla behavior for player-crafted xenogerms

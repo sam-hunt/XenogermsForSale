@@ -68,28 +68,28 @@ namespace XenogermsForSale
             var breakdown = XenogermPricing.Calculate(geneSet.GenesListForReading);
             var sb = new StringBuilder();
 
-            // Show xenotype name
-            sb.AppendLine($"Preset xenotype ({comp.sourceXenotype.label}): +{Settings.basePresetValue}");
+            // Show xenotype preset base
+            sb.AppendLine($"Full xenogene set premium: +{Settings.basePresetValue}");
 
             // Show metabolism contribution
             if (breakdown.AbsoluteMetabolism > 0)
             {
                 float metabolismValue = breakdown.AbsoluteMetabolism * Settings.valuePerMetabolism;
-                sb.AppendLine($"Genetic metabolism ({breakdown.AbsoluteMetabolism}): +{metabolismValue}");
+                sb.AppendLine($"Genetic metabolism premium ({Settings.valuePerMetabolism} x {breakdown.AbsoluteMetabolism}): +{metabolismValue}");
             }
 
             // Show complexity contribution
             if (breakdown.Complexity > 0)
             {
                 float complexityValue = breakdown.Complexity * Settings.valuePerComplexity;
-                sb.AppendLine($"Genetic complexity ({breakdown.Complexity}): +{complexityValue}");
+                sb.AppendLine($"Genetic complexity premium ({Settings.valuePerComplexity} x {breakdown.Complexity}): +{complexityValue}");
             }
 
             // Show archite contribution
             if (breakdown.Archites > 0)
             {
                 float architeValue = breakdown.Archites * Settings.valuePerArchite;
-                sb.AppendLine($"Archite genes ({breakdown.Archites}): +{architeValue}");
+                sb.AppendLine($"Archite genes ({Settings.valuePerArchite} x {breakdown.Archites}): +{architeValue}");
             }
 
             return sb.ToString().TrimEnd();
